@@ -1,14 +1,14 @@
 
-var update = function () {
+// var update = function () {
 
-    // get the current day
-    var currentDay = document.querySelector("#currDay")
-        .innerHTML = moment().format("MM/DD/YYYY");
-   
+//     // get the current day
+//     var currentDay = document.querySelector("#currDay")
+//         .innerHTML = moment().format("MM/DD/YYYY");
+//    console.log("ere")
 
-    }
+//     }
     
-    setInterval(update, 1000);
+//     setInterval(update, 1000);
     
     
     

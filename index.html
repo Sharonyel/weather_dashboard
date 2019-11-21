@@ -11,8 +11,8 @@
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-    <!-- Style to fix the issue of text extending past card length -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 
 <body>
@@ -36,19 +36,21 @@
                 <td></td>
             </table>
         </div>
-
+        <!--  Weather Box  -->
         <div class="col-sm-8 weatherDisplay">
-            <div class="row displayDay">
-                <h3 class="col-2" id="cityDisplay"></h3>
-                <h3 class="col-3" id="currDay"></h3>
-                <img src="" alt="">
+            <div class="weatherBox">
+                <div class="row displayDay">
+                    <h3 class="col-2" id="cityDisplay"></h3>
+                    <h3 class="col-3" id="currDay"></h3>
+                    <img src="" alt="">
+                </div>
+                <div class="weatherInfo">
+                    <h6 class="dispTemp"></h6>
+                    <h6 class="dispWind"></h6>
+                    <h6 class="dispHumd"></h6>
+                </div>
             </div>
-            <div class="weatherInfo">
-                <h6 class="dispTemp"></h6>
-                <h6 class="dispWind"></h6>
-                <h6 class="dispHumd"></h6>
-            </div>
-            <div></div>
+            <hr>
             <h4 style="text-align: left">5-Day Forecast:</h4>
             <div class="row fiveDay">
                 <div class="col-2 forcast" id="dayOne"></div>
@@ -60,88 +62,12 @@
         </div>
 
     </div>
+   
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- <script src="/assets/moments.js"></script> -->
+  <script src="/assets/weather.js"></script>
 
-
-
-
-    <button data-city="charlotte">charlotte</button>
-    <button data-city="orlando">orlando</button>
-    <!-- <div id="gifs-appear-here"> -->
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        // Adding click event listen listener to all buttons
-        $("button").on("click", function () {
-            // Grabbing and storing the data-animal property value from the button
-            var citySearch = $(this).attr("data-city");
-
-            // Constructing a queryURL using the search city
-
-            var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
-                citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169";
-
-            console.log(queryURL);
-
-
-
-            // Performing an AJAX request with the queryURL
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            })
-                // After data comes back from the request
-                .then(function (response) {
-                    console.log(queryURL);
-
-                    console.log(response);
-                    // storing the data from the AJAX request in the results variable
-                    var windSpeed = response.wind.speed;
-                    var humidity = response.main.humidity;
-                    var temp = response.main.temp;
-                    //   var icon = response.weather.icon;
-
-                    console.log("Temperature " + temp)
-                    console.log("Humidity " + humidity)
-                    console.log("Wind speed" + windSpeed)
-                    //   console.log("icon " + icon)
-
-                    // Looping through each result item
-                    //   for (var i = 0; i < results.length; i++) {
-
-                    //     // Creating and storing a div tag
-                    var cityDiv = $("<div>").text(citySearch);
-
-                    //     // Creating a paragraph tag with the result item's rating
-
-
-
-                    var p = ((temp - 273) * 1.8) + 32;
-                    var n = p.toFixed();
-                    var tempDegrees = $("<p>").text("Temperature: " + n);
-
-                    var hum = $("<p>").text("humidity " + humidity + "%");
-
-                    var wind = $("<p>").text("wind speed " + windSpeed);
-                    //     // Creating and storing an image tag
-                    //     var animalImage = $("<img>");
-                    //     // Setting the src attribute of the image to a property pulled off the result item
-                    //     animalImage.attr("src", results[i].images.fixed_height.url);
-
-                    //     // Appending the paragraph and image tag to the animalDiv
-                    // cityDiv.append(tempDegrees);
-                    // cityDiv.append(wind);
-                    // cityDiv.append(hum)
-
-                    //     // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-                    $("#cityDisplay").append(cityDiv + "" + currentDay);
-                    $(".dispTemp").append(tempDegrees);
-                    $(".dispWind").append(wind);
-                    $(".dispHumd").append(hum);
-
-                    //   }
-                });
-        });
-    </script>
+    
 </body>
 
 </html>
