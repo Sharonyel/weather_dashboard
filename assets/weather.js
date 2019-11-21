@@ -1,25 +1,32 @@
-// Adding click event listen listener to all buttons
+// Adding click event listen listener 
+
+var citySearch
+var cityArry = [];
+var i = 0;
+
+// function init()
 $("button").on("click", function () {
-    console.log("here weather")
 
-    var citySearch = $("#search-city")
-        .val()
-        .trim();
+    citySearch = $("#search-city").val().trim();
+    // $("#search-city") = "";
+ cityArry = citySearch;
 
-// Constructing a queryURL using the search city
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
     citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169";
+var queryURLf =  "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169";
 
-console.log(queryURL);
+    getWeather();
+    citySave(citySearch);
+
 // Performing an AJAX request with the queryURL
+function getWeather(){
 $.ajax({
     url: queryURL,
     method: "GET"
 })
-    // After data comes back from the request
     .then(function (response) {
-        console.log(queryURL);
 
         console.log(response);
         // storing the data from the AJAX request in the results variable
@@ -27,23 +34,9 @@ $.ajax({
         var windSpeed = response.wind.speed;
         var humidity = response.main.humidity;
         var temp = response.main.temp;
-        //   var icon = response.weather.icon;
+        var icon = response.weather.icon;
 
-        // console.log("Temperature " + temp)
-        // console.log("Humidity " + humidity)
-        // console.log("Wind speed" + windSpeed)
-        //   console.log("icon " + icon)
-
-        // Looping through each result item
-        //   for (var i = 0; i < results.length; i++) {
-
-        //     // Creating and storing a div tag
-        var cityDiv = $("<div>").text(citySearch);
-
-        //     // Creating a paragraph tag with the result item's rating
-
-
-
+        var cityDiv = $("<h1>").html(citySearch);
         var p = ((temp - 273) * 1.8) + 32;
         var n = p.toFixed();
         var tempDegrees = $("<p>").text("Temperature: " + n);
@@ -52,24 +45,18 @@ $.ajax({
 
         var wind = $("<p>").text("wind speed " + windSpeed);
 
-        $("#cityDisplay").append(cityDiv);
-        $(".dispTemp").append(tempDegrees);
-        $(".dispWind").append(wind);
-        $(".dispHumd").append(hum);
-
+        $(".displayDay").append(cityDiv);
+        $(".weatherInfo").append(tempDegrees);
+        $(".weatherInfo").append(wind);
+        $(".weatherInfo").append(hum);
 
 getFiveday();
 
     });
+}
 
 function getFiveday() {
-console.log("fiveday")
-
-  var queryURLf =  "https://api.openweathermap.org/data/2.5/forecast?q=" +
-         citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169"
-
          console.log(queryURLf)
-
     // Performing an AJAX request with the queryURL
     $.ajax({
         url: queryURLf,
@@ -78,7 +65,51 @@ console.log("fiveday")
         .then(function (response) {
             console.log("-------")
             console.log(response)
+            var dateOne = response.list[0].dt_txt;
+            // var forIcon = response.weather.icon;
+            var forTemp = response.list[0].main.temp;
+            var forHum = response.list[0].main.humidity;
+
+        console.log("Temperature " + forTemp)
+        console.log("Humidity " + forHum)
+        console.log("date " + dateOne)
+        //   console.log("icon " + forIcon)
+        
+        var p = ((forTemp - 273) * 1.8) + 32;
+        var n = p.toFixed();
+        var forTemperature = $("<p>").text("Temperature: " + n);
+        
+        $("#dayOne").append(dateOne);
+        $("#dayOne").append(forTemperature);
+        $("#dayOne").append(forHum);
 
 });
 }
+
 })
+
+function citySave(){
+    // 
+    var cityList = $('<label>' + cityArry + '</label>')
+    
+    $ (".storeCity").append(cityList);
+
+    localStorage.setItem(i, JSON.stringify(cityArry));
+    i++;
+    
+    $("label").on("click", function () {
+        alert("clicked")
+
+       
+
+    }
+    )}
+
+
+
+
+
+ 
+
+
+
