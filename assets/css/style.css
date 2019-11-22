@@ -16,6 +16,9 @@ body{
     border: 10px;
     margin-bottom: 10px;
 }
+/* h6{
+    color: white;
+} */
 
 h1{
     /* border: black; */
@@ -31,9 +34,6 @@ h1{
     border-radius: 5px;
     border: black;
     background: grey;
-
-
-
 }
 #search-city{
     width: 50%;
@@ -76,7 +76,7 @@ p{
     text-align: left;
     font-size: 15px;
 }
-.displayDay{
+/* .displayDay{
     margin-bottom: 30px;
     padding: 10px;
-}
+} */

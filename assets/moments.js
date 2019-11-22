@@ -1,16 +1,15 @@
 
-// var update = function () {
+var update = function () {
 
-//     // get the current day
-//     document.querySelector("#currDay")
-//         .innerHTML = moment().format("MM/DD/YYYY");
 
-//         var currentDay = moment().format();
-//    console.log("here moments" + currentDay)
-
-//     }
+// document.querySelector("#currDay")
+// .innerHTML = moment().format("MMMM Do YYYY");
     
-//     setInterval(update, 1000);
+        var currentDay = moment().calendar();
+
+    }
+    
+    setInterval(update, 1000);
     
     
     

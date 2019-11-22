@@ -3,12 +3,12 @@
 var citySearch
 var cityArry = [];
 var i = 0;
+// var currentDay = "";
 
 // function init()
 $("button").on("click", function () {
 
     citySearch = $("#search-city").val().trim();
-    // $("#search-city") = "";
  cityArry = citySearch;
 
 
@@ -34,19 +34,30 @@ $.ajax({
         var windSpeed = response.wind.speed;
         var humidity = response.main.humidity;
         var temp = response.main.temp;
-        var icon = response.weather.icon;
+        var icon = response.weather[0].icon;
+        console.log("icon " + icon)
+    //    var iconImg = $("<img src='http://openweathermap.org/img/wn/10d.png'>")
+       var iconImg = $("<img src=http://openweathermap.org/img/wn/" + icon + ".png>")
 
-        var cityDiv = $("<h1>").html(citySearch);
+
+        var cityDiv = $("<h1>").html(citySearch + "  ");
         var p = ((temp - 273) * 1.8) + 32;
         var n = p.toFixed();
-        var tempDegrees = $("<p>").text("Temperature: " + n);
+        var tempDegrees = $("<p>").html("Temperature: " + n + '°');
+        var hum = $("<p>").text("Humidity " + humidity + "%");
+        var iconDiv = $("<p>").text(icon)
+        var wind = $("<p>").text("Wind Speed " + windSpeed);
 
-        var hum = $("<p>").text("humidity " + humidity + "%");
+        $(".displayDay").append(cityDiv)
+        // $(".displayDay").append(currentDay)
 
-        var wind = $("<p>").text("wind speed " + windSpeed);
+        $(".displayDay").append(iconImg);
+  
 
-        $(".displayDay").append(cityDiv);
+        // $("#icon").attr("src", iconImg);
+
         $(".weatherInfo").append(tempDegrees);
+
         $(".weatherInfo").append(wind);
         $(".weatherInfo").append(hum);
 
@@ -58,34 +69,37 @@ getFiveday();
 function getFiveday() {
          console.log(queryURLf)
     // Performing an AJAX request with the queryURL
+
+    // for (var f=0; f<5; f++){
     $.ajax({
         url: queryURLf,
         method: "GET"
     })
         .then(function (response) {
-            console.log("-------")
-            console.log(response)
-            var dateOne = response.list[0].dt_txt;
-            // var forIcon = response.weather.icon;
-            var forTemp = response.list[0].main.temp;
-            var forHum = response.list[0].main.humidity;
-
-        console.log("Temperature " + forTemp)
-        console.log("Humidity " + forHum)
-        console.log("date " + dateOne)
-        //   console.log("icon " + forIcon)
-        
+            var dateOne = response.list[17].dt_txt
+            var forIcon = response.list[17].weather[0].icon;
+            var forTemp = response.list[17].main.temp;
+            var forHum = response.list[17].main.humidity;
+            var iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>")
+         
         var p = ((forTemp - 273) * 1.8) + 32;
         var n = p.toFixed();
-        var forTemperature = $("<p>").text("Temperature: " + n);
+        var forTemperature = $("<h6>").css("color", "white").text("Temp: " + n + "°");
+        var forHumidity = $("<h6>").css("color", "white").text("Humidity " + forHum + "%");
+
+            var forDate = $("<h6>").css("color", "white").text(dateOne);
         
-        $("#dayOne").append(dateOne);
-        $("#dayOne").append(forTemperature);
-        $("#dayOne").append(forHum);
+ 
+        $("#dayTwo").append(forDate);
+        $("#dayTwo").append(iconImgf);
+        $("#dayTwo").append(forTemperature);
+        $("#dayTwo").append(forHumidity);
+
+        
 
 });
+// }
 }
-
 })
 
 function citySave(){

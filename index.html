@@ -43,12 +43,14 @@
         <!--  Weather Box  -->
         <div class="col-sm-8 weatherDisplay">
             <div class="weatherBox">
-                <hr>
+                <!-- <hr> -->
+             <div class="container">
                 <div class="row displayDay">
-                    <!-- <h3 class="col-2" id="cityDisplay"></h3> -->
-                    <!-- <h3 class="col-3" id="currDay"></h3> -->
-                    <!-- <img src="" alt=""> -->
+                    <h3 id="cityDisplay"></h3>
+                    <h3 id="currDay"></h3>
+                    <img  id="icon" src="" alt="">
                 </div>
+            </div>
                 <div class="weatherInfo">
                     <!-- <h6 class="dispTemp"></h6>
                     <h6 class="dispWind"></h6>
@@ -73,7 +75,10 @@
     </div>
    
   <script src="https://code.jquery.com/jquery.js"></script>
-  <!-- <script src="./assets/moments.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/moments.js"></script>
+  <script type="text/javascript"></script>
+
   <script src="./assets/weather.js"></script>
 
     
