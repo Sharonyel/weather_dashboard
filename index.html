@@ -31,6 +31,7 @@
                 <input type="text" class="form-control" id="search-city">
                 <button type="submit" class="btn btn-default" id="run-search">
                     <i class="fa fa-search"></i> Search</button>
+                    <!-- <i class="fas fa-search-location"></i> -->
                    
             </div>
             <br>
@@ -46,23 +47,16 @@
                 <!-- <hr> -->
              <div class="container">
                 <div class="row displayDay">
-                    <h3 id="cityDisplay"></h3>
-                    <h3 id="currDay"></h3>
-                    <img  id="icon" src="" alt="">
                 </div>
             </div>
                 <div class="weatherInfo">
-                    <!-- <h6 class="dispTemp"></h6>
-                    <h6 class="dispWind"></h6>
-                    <h6 class="dispHumd"></h6> -->
                 </div>
             </div>
             <hr>
-            <h4 style="text-align: left">5-Day Forecast:</h4>
+            <h4 class="fiveDayFore" style="text-align: left"></h4>
+            <div class="container">
             <div class="row fiveDay">
                 <div class="forecastTemp"></div>
-                <!-- <h3 class="forecastHum"></h3>
-                <h3 class="forecastTemp"></h3> -->
 
                 <div class="col-2 forcast" id="dayOne"></div>
                 <div class="col-2 forcast" id="dayTwo"></div>
@@ -71,13 +65,14 @@
                 <div class="col-2 forcast" id="dayFive"></div>
             </div>
         </div>
-
+    </div>
     </div>
    
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/moments.js"></script>
   <script type="text/javascript"></script>
+  <!-- <script src="savy.js"></script> -->
 
   <script src="./assets/weather.js"></script>
 
