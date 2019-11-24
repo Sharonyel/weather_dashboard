@@ -4,6 +4,7 @@ var currentDay;
 var citySearch;
 var cityArry = [];
 var i = 0;
+var forecastBox = document.getElementById(".forecastTemp")
 
 
 $("button").on("click", function () {
@@ -11,7 +12,7 @@ $("button").on("click", function () {
     citySearch = $("#search-city").val().trim();
     cityArry.push(citySearch);
     $(cityList).empty();
-    $("p").empty(), $("h2").empty(), $("h6").empty(), $("h4").empty(),
+    $("p").empty(), $("h2").empty(), $("h4").empty(),
     $('img').attr('src', ''), $('.forecast').empty();
     $(".forcast").empty();
     $("#search-city").val("");
@@ -76,7 +77,6 @@ function getFiveday() {
          console.log(queryURLf)
     // Performing an AJAX request with the queryURL
 
-    // for (var f=0; f<5; f++){
     $.ajax({
         url: queryURLf,
         method: "GET"
@@ -87,36 +87,38 @@ function getFiveday() {
 
     $(".fiveDayFore").append(forDay);
 
+    // forecastBox.style.display = "inline-flex";
 
-    var dateOne = (moment(response.list[1].dt_txt).format("M/D/YYY")), forIcon = response.list[1].weather[0].icon,
+
+    var dateOne = (moment(response.list[1].dt_txt).format("M/D/YYYY")), forIcon = response.list[1].weather[0].icon,
     forTemp = response.list[1].main.temp,forHum = response.list[1].main.humidity, 
     iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>"),        
     p = ((forTemp - 273) * 1.8) + 32,n = p.toFixed(),forTemperature = $("<p>").css("color", "white").text("Temp: " + n + " °F"),
     forHumidity = $("<p>").css("color", "white").text("Humidity " + forHum + "%"),forDate = $("<p>").css("color", "white").text(dateOne);
     $("#dayOne").append(forDate);$("#dayOne").append(iconImgf);$("#dayOne").append(forTemperature);$("#dayOne").append(forHumidity);
 
-    var dateOne = (moment(response.list[9].dt_txt).format("M/D/YYY")), forIcon = response.list[9].weather[0].icon,
+    var dateOne = (moment(response.list[9].dt_txt).format("M/D/YYYY")), forIcon = response.list[9].weather[0].icon,
     forTemp = response.list[9].main.temp,forHum = response.list[9].main.humidity, 
     iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>"),        
     p = ((forTemp - 273) * 1.8) + 32,n = p.toFixed(),forTemperature = $("<p>").css("color", "white").text("Temp: " + n + " °F"),
     forHumidity = $("<p>").css("color", "white").text("Humidity " + forHum + "%"),forDate = $("<p>").css("color", "white").text(dateOne);
     $("#dayTwo").append(forDate);$("#dayTwo").append(iconImgf);$("#dayTwo").append(forTemperature);$("#dayTwo").append(forHumidity);
 
-    var dateOne = (moment(response.list[17].dt_txt).format("M/D/YYY")), forIcon = response.list[17].weather[0].icon,
+    var dateOne = (moment(response.list[17].dt_txt).format("M/D/YYYY")), forIcon = response.list[17].weather[0].icon,
     forTemp = response.list[17].main.temp,forHum = response.list[17].main.humidity, 
     iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>"),        
     p = ((forTemp - 273) * 1.8) + 32,n = p.toFixed(),forTemperature = $("<p>").css("color", "white").text("Temp: " + n + " °F"),
     forHumidity = $("<p>").css("color", "white").text("Humidity " + forHum + "%"),forDate = $("<p>").css("color", "white").text(dateOne);
     $("#dayThree").append(forDate);$("#dayThree").append(iconImgf);$("#dayThree").append(forTemperature);$("#dayThree").append(forHumidity);
 
-    var dateOne = (moment(response.list[25].dt_txt).format("M/D/YYY")), forIcon = response.list[25].weather[0].icon,
+    var dateOne = (moment(response.list[25].dt_txt).format("M/D/YYYY")), forIcon = response.list[25].weather[0].icon,
     forTemp = response.list[25].main.temp,forHum = response.list[25].main.humidity, 
     iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>"),        
     p = ((forTemp - 273) * 1.8) + 32,n = p.toFixed(),forTemperature = $("<p>").css("color", "white").text("Temp: " + n + " °F"),
     forHumidity = $("<p>").css("color", "white").text("Humidity " + forHum + "%"),forDate = $("<p>").css("color", "white").text(dateOne);
     $("#dayFour").append(forDate);$("#dayFour").append(iconImgf);$("#dayFour").append(forTemperature);$("#dayFour").append(forHumidity);
 
-    var dateOne = (moment(response.list[33].dt_txt).format("M/D/YYY")), forIcon = response.list[33].weather[0].icon,
+    var dateOne = (moment(response.list[33].dt_txt).format("M/D/YYYY")), forIcon = response.list[33].weather[0].icon,
     forTemp = response.list[33].main.temp,forHum = response.list[33].main.humidity, 
     iconImgf = $("<img src=http://openweathermap.org/img/wn/" + forIcon + ".png>"),        
     p = ((forTemp - 273) * 1.8) + 32,n = p.toFixed(),forTemperature = $("<p>").css("color", "white").text("Temp: " + n + " °F"),
@@ -135,17 +137,10 @@ function citySave(){
 
 function getStored() {
 
-
-    // localStorage.removeItem("cities");
     $(".storeCity").empty();
-
 
     var cities = JSON.parse(localStorage.getItem("cities"))
     console.log("cities " + cities)
-
-    //  empty the list before listing
-
-
 
     // giphy - use this to get the vaule from the button using the data attr.
     for (var g = 0; g < cities.length; g++) {
@@ -161,11 +156,31 @@ function getStored() {
     cityList.append(button);
 
 
-    $(".storeCity").append(cityList);
+    $(".storeCity").prepend(cityList);
  
     }
     
 }
+$(".storeCity").on("click", function(event) {
+    // button.addEventListener("click", function(event) {
+
+    event.preventDefault();
+    var element = event.target;
+    if (element.matches("button") === true) {
+       console.log("element " + element)
+        var buttonText = element.textContent
+        console.log("text " + buttonText);
+    
+    }
+
+  });
+
+// 
+
+
+
+
+
 
 
 var update = function () {
