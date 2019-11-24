@@ -71,11 +71,31 @@ h2{
     border-style: solid;
     border-color: green;
 } */
-#dayOne, #dayTwo, #dayThree, #dayFour, #dayFive{
-    background: rgb(58, 127, 231);
+#fivedayRow{
     height: 160px;
-    margin: 10px;
+    border: 20px;
+    width: 20px;
+    margin: auto;
+    padding: 50px;
 }
+.fiveDay{
+    padding: 20px;
+    margin: auto'
+}
+.cityBtn {
+    width: 200px;
+    height: 40px;
+    padding: 0;
+    margin-left: 20px;
+    font-size: 20px;
+    /* border-block-start-color: gray; */
+    background-color: transparent;
+    color: black;
+}
+.card{
+    display: inline;
+}
+
 .weatherInfo{
     margin-right: auto;
     text-justify: distribute-all-lines;
@@ -85,8 +105,8 @@ p{
     text-align: left;
     font-size: 15px;
 }
-.displayDay{
+/* .displayDay{
     margin-bottom: 30px;
     padding: 10px;
-}
+} */
 

@@ -26,13 +26,12 @@
     </div>
     <div class="row">
         <div class="col-sm-3 searchBox" id="search">
-            <h5 class="text-center">Search A City:</h5>
+            <h5 class="text-left">Search A City:</h5>
             <div class="row">
                 <input type="text" class="form-control" id="search-city">
                 <button type="submit" class="btn btn-default" id="run-search">
                     <i class="fa fa-search"></i></button>
                     <!-- <i class="fas fa-search-location"></i> -->
-                   
             </div>
             <br>
             <hr>
@@ -45,17 +44,26 @@
         <div class="col-sm-8 weatherDisplay">
             <div class="weatherBox">
                 <!-- <hr> -->
-             <div class="container">
+             <!-- <div class="container"> -->
                 <div class="row displayDay">
                 </div>
-            </div>
+            <!-- </div> -->
                 <div class="weatherInfo">
                 </div>
             </div>
             <hr>
-            <h4 class="fiveDayFore" style="text-align: left"></h4>
+            <h4 class="fiveDayFore" style="text-align: center"></h4>
             <div class="container">
-            <div class="row fiveDay">
+                    <div class="cardbody fiveDay">
+                            <div class="row" id="fiveDayList">
+                            <!-- dynamically insert data -->
+                            </div>
+                        </div>
+
+
+
+
+            <!-- <div class="row fiveDay">
                 <div class="forecastTemp" id="5day"></div>
 
                 <div class="col-2 forcast" id="dayOne"></div>
@@ -63,7 +71,7 @@
                 <div class="col-2 forcast" id="dayThree"></div>
                 <div class="col-2 forcast" id="dayFour"></div>
                 <div class="col-2 forcast" id="dayFive"></div>
-            </div>
+            </div> -->
         </div>
     </div>
     </div>
