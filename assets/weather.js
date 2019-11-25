@@ -4,7 +4,25 @@ var currentDay;
 var citySearch;
 var cityArry = [];
 var i = 0;
-var forecastBox = document.getElementById(".forecastTemp")
+// var forecastBox = document.getElementById(".forecastTemp")
+
+getStored();
+
+$(".storeCity").empty();
+
+var cities = JSON.parse(localStorage.getItem("cities"))
+    
+ citySearch = cities[cities.length-1];
+ $(cityList).empty();
+ $(".displayDay").empty();
+ $(".weatherInfo").empty();
+ $("h4").empty(), $(".forcast").empty();
+ currentDay = moment().format("MM/DD/YYYY");
+
+ getWeather();
+
+
+
 
 
 $("button").on("click", function () {
@@ -14,15 +32,12 @@ $("button").on("click", function () {
     $(cityList).empty();
     $(".displayDay").empty();
     $(".weatherInfo").empty();
-    // $("p").empty(), $("h2").empty(), $("h4").empty(),
-    // $('img').attr('src', ''), $('.forecast').empty();
     $("h4").empty(), $(".forcast").empty();
     $("#search-city").val("");
 
-    
     citySave();
     getWeather();
-
+})
 
 
 // Performing an AJAX request with the queryURL
@@ -120,7 +135,7 @@ function getFiveday() {
 
 });
 }
-})
+
 
 function citySave(){
     
@@ -162,9 +177,14 @@ $(".storeCity").on("click", function(event) {
         var buttonText = element.textContent
         console.log("text " + buttonText);
         citySearch = buttonText;
-
-    // getWeather()
+  
     }
+    $(".displayDay").empty();
+    $(".weatherInfo").empty();
+    $("h4").empty(), $(".forcast").empty();
+
+    citySave();
+    getWeather();
 
   });
 
