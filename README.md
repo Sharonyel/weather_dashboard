@@ -4,16 +4,16 @@ A weather dashboard application with search functionality to find current weathe
 
 Code Style
 ---
-HTML
-CSS
-Javascript
-jQuery
+* HTML
+* CSS
+* Javascript
+* jQuery
 
 List of File
 ---
-index.html
-weather.js
-style.css
+* index.html
+* weather.js
+* style.css
 
 View of Dashboard
 ---
