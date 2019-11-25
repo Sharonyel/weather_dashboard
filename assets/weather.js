@@ -1,23 +1,21 @@
-// Adding click event listen listener 
+// Variables
 var cityList;
 var currentDay;
 var citySearch;
 var cityArry = [];
-var i = 0;
-// var forecastBox = document.getElementById(".forecastTemp")
+
+// localStorage.setItem("cities", JSON.stringify(cityArry));
 
 getStored();
 
 $(".storeCity").empty();
 
 var cities = JSON.parse(localStorage.getItem("cities"))
-    
  citySearch = cities[cities.length-1];
  $(cityList).empty();
  $(".displayDay").empty();
  $(".weatherInfo").empty();
  $("h4").empty(), $(".forcast").empty();
-//  currentDay = moment().format("MM/DD/YYYY");
 
  getWeather();
 
@@ -35,14 +33,10 @@ $("button").on("click", function () {
     getWeather();
 })
 
-
 // Performing an AJAX request with the queryURL
 function getWeather(){
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
     citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169";
-
-
-
 
 $.ajax({
     url: queryURL,
@@ -63,15 +57,12 @@ getFiveday();
 
     });
 }
-
+// Get the 5 day forecast information
 function getFiveday() {
          console.log(queryURLf)
 
          var queryURLf =  "https://api.openweathermap.org/data/2.5/forecast?q=" +
          citySearch + "&appid=0a3f6592d9795a08c339db24e4efc169";
-     
-     
-
     // Performing an AJAX request with the queryURL
 
     $.ajax({
@@ -80,11 +71,11 @@ function getFiveday() {
     })
         .then(function (response) {
 
-    // var foreDay = $("<h4>").html("5-Day Forecast");
+// Display 5 day Forecast
 
     $(".fiveDayFore").append("<h4>5-Day Forecast:</h4>");
     $("#fiveDayList").empty();
-    // forecastBox.style.display = "inline-flex";
+  
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayInfo'><p>" + 
     (moment(response.list[1].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[1].weather[0].icon + ".png'> <p>Temp: " + ((response.list[1].main.temp-273)*1.8+32).toFixed(2) + 
@@ -117,11 +108,11 @@ function getFiveday() {
 function citySave(){
     
     localStorage.setItem("cities", JSON.stringify(cityArry));
-    i++;
+  
     getStored();
 }
 
-
+// Get stored cities and display them on the search history list
 function getStored() {
 
     $(".storeCity").empty();
@@ -144,8 +135,9 @@ function getStored() {
     }
     
 }
+
+// Search city from the search history list
 $(".storeCity").on("click", function(event) {
-    // button.addEventListener("click", function(event) {
 
     event.preventDefault();
     var element = event.target;
@@ -164,13 +156,7 @@ $(".storeCity").on("click", function(event) {
     getWeather();
 
   });
-
-// 
-
 var update = function () {
-     currentDay = moment().format("MM/DD/YYYY");
-     var nextday = currentDay + 1;
-     console.log("curd 1 " + nextday)
     
         }
         

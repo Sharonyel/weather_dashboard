@@ -1,17 +1,12 @@
 *, *::before, *::after{
     box-sizing: border-box;
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body{
    padding: 0;
    margin: 0;
-
-}
-img{
-    padding: 0;
-    
+   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .banner{
     height: 70px;
@@ -23,7 +18,6 @@ img{
 button{
     background-color:  rgb(58, 127, 231);
     color: white;
-    font-display: none;
 }
 h2{
     /* border: black; */
@@ -32,6 +26,9 @@ h2{
     text-align: center;
     line-height: 80px;
     margin: 10px;
+}
+img{
+    margin-top: -25px;
 }
 .dashboard{
     border-radius: 5px;
