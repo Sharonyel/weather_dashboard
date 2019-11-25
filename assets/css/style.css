@@ -9,7 +9,10 @@ body{
    margin: 0;
 
 }
-img
+img{
+    padding: 0;
+    
+}
 .banner{
     height: 70px;
     width: 100%;
@@ -60,7 +63,7 @@ h2{
     border-radius: 10px;
     padding: 30px;
     /* box-shadow: 0 0 10px 2px; */
-    font-size: 20px;
+    font-size: 30px;
     justify-content: center;
     margin: auto;
 
@@ -71,6 +74,7 @@ h2{
     width: 20px;
     margin: auto;
     padding: 50px;
+    text-align: center;
 }
 .fiveDay{
     padding: 20px;
@@ -92,8 +96,9 @@ h2{
 
 .weatherInfo{
     margin-right: auto;
-    text-justify: distribute-all-lines;
-    text-align: center;
+    /* text-justify: distribute-all-lines; */
+    text-align: left;
+    font-size: 20px;
 }
 p{
     text-align: left;

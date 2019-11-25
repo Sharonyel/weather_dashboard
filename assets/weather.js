@@ -17,13 +17,9 @@ var cities = JSON.parse(localStorage.getItem("cities"))
  $(".displayDay").empty();
  $(".weatherInfo").empty();
  $("h4").empty(), $(".forcast").empty();
- currentDay = moment().format("MM/DD/YYYY");
+//  currentDay = moment().format("MM/DD/YYYY");
 
  getWeather();
-
-
-
-
 
 $("button").on("click", function () {
 
@@ -55,33 +51,14 @@ $.ajax({
     .then(function (response) {
 
         console.log(response);
-        // storing the data from the AJAX request in the results variable
-        // $('img').attr('src', ''), $('.forecast').empty();
-        var windSpeed = response.wind.speed;
-        var humidity = response.main.humidity;
-        var temp = response.main.temp;
-        var icon = response.weather[0].icon;
-        console.log("icon " + icon)
-       var iconImg = $("<img src=http://openweathermap.org/img/wn/" + icon + ".png>")
 
+        $(".displayDay").append("<h1>").html(citySearch + "   " + "(" + moment().format("MM/DD/YYYY") + ")" + 
+        "<img src=http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png>")
 
-        var cityDiv = $("<h2>").html(citySearch + "   ");
-        var p = ((temp - 273) * 1.8) + 32;
-        var n = p.toFixed();
-        var dispDate = $("<h2>").html("  " + "(" + currentDay + ")");
-        var tempDegrees = $("<p>").html("Temperature: " + n + ' °F');
-        var hum = $("<p>").text("Humidity " + humidity + "%");
-        var iconDiv = $("<p>").text(icon)
-        var wind = $("<p>").text("Wind Speed " + windSpeed);
-        
-        $(".displayDay").append(cityDiv)
-        $(".displayDay").append(dispDate)
-        $(".displayDay").append(iconImg);
-        $(".weatherInfo").append(tempDegrees);
-        $(".weatherInfo").append(wind);
-        $(".weatherInfo").append(hum);
-
-        
+        $(".weatherInfo").append("<p class='dispCurr'>Temperature: " + ((response.main.temp-273)*1.8+32).toFixed(1) + "°F</p>"); 
+        $(".weatherInfo").append("<p class='dispCurr'>Humidity " + response.main.humidity + "%");
+        $(".weatherInfo").append("<p class='dispCurr'>Wind Speed " + response.wind.speed + " MPH");
+      
 getFiveday();
 
     });
@@ -103,34 +80,34 @@ function getFiveday() {
     })
         .then(function (response) {
 
-    var foreDay = $("<h4>").html("5-Day Forecast");
+    // var foreDay = $("<h4>").html("5-Day Forecast");
 
-    $(".fiveDayFore").append(foreDay);
+    $(".fiveDayFore").append("<h4>5-Day Forecast:</h4>");
     $("#fiveDayList").empty();
     // forecastBox.style.display = "inline-flex";
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayInfo'><p>" + 
     (moment(response.list[1].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
-    response.list[1].weather[0].icon + ".png'> <p>Temp: " + ((response.list[1].main.temp-273)*1.8+32).toFixed() + 
+    response.list[1].weather[0].icon + ".png'> <p>Temp: " + ((response.list[1].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[1].main.humidity + "%" + "</p></div>");
 
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
     (moment(response.list[9].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
-    response.list[9].weather[0].icon + ".png'> <p>Temp: " + ((response.list[9].main.temp-273)*1.8+32).toFixed() + 
+    response.list[9].weather[0].icon + ".png'> <p>Temp: " + ((response.list[9].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[9].main.humidity + "%" + "</p></div>");
 
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
     (moment(response.list[17].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
-    response.list[17].weather[0].icon + ".png'> <p>Temp: " + ((response.list[17].main.temp-273)*1.8+32).toFixed() + 
+    response.list[17].weather[0].icon + ".png'> <p>Temp: " + ((response.list[17].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[17].main.humidity + "%" + "</p></div>");
 
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
     (moment(response.list[25].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
-    response.list[25].weather[0].icon + ".png'> <p>Temp: " + ((response.list[25].main.temp-273)*1.8+32).toFixed() + 
+    response.list[25].weather[0].icon + ".png'> <p>Temp: " + ((response.list[25].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[25].main.humidity + "%" + "</p></div>");
 
     $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
     (moment(response.list[33].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
-    response.list[33].weather[0].icon + ".png'> <p>Temp: " + ((response.list[33].main.temp-273)*1.8+32).toFixed() + 
+    response.list[33].weather[0].icon + ".png'> <p>Temp: " + ((response.list[33].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[33].main.humidity + "%" + "</p></div>");
 
 });
