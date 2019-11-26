@@ -20,7 +20,7 @@ var cities = JSON.parse(localStorage.getItem("cities"))
  getWeather();
 
 $("button").on("click", function () {
-
+console.log("hello")
     citySearch = $("#search-city").val().trim();
     cityArry.push(citySearch);
     $(cityList).empty();
