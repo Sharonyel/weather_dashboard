@@ -4,7 +4,7 @@ var currentDay;
 var citySearch;
 var cityArry = [];
 
-// localStorage.setItem("cities", JSON.stringify(cityArry));
+localStorage.setItem("cities", JSON.stringify(cityArry));
 
 getStored();
 
@@ -20,7 +20,7 @@ var cities = JSON.parse(localStorage.getItem("cities"))
  getWeather();
 
 $("button").on("click", function () {
-console.log("hello")
+
     citySearch = $("#search-city").val().trim();
     cityArry.push(citySearch);
     $(cityList).empty();
