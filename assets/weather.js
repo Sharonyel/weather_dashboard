@@ -4,7 +4,7 @@ var currentDay;
 var citySearch;
 var cityArry = [];
 
-localStorage.setItem("cities", JSON.stringify(cityArry));
+// localStorage.setItem("cities", JSON.stringify(cityArry));
 
 getStored();
 
