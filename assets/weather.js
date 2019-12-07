@@ -10,7 +10,7 @@ getStored();
 
 $(".storeCity").empty();
 
-var cities = JSON.parse(localStorage.getItem("cities"))
+var cities = JSON.parse(localStorage.getItem("cities")) || []
  citySearch = cities[cities.length-1];
  $(cityList).empty();
  $(".displayDay").empty();
@@ -76,27 +76,27 @@ function getFiveday() {
     $(".fiveDayFore").append("<h4>5-Day Forecast:</h4>");
     $("#fiveDayList").empty();
   
-    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayInfo'><p>" + 
+    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay'><p>" + 
     (moment(response.list[1].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[1].weather[0].icon + ".png'> <p>Temp: " + ((response.list[1].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[1].main.humidity + "%" + "</p></div>");
 
-    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
+    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay'><p>" + 
     (moment(response.list[9].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[9].weather[0].icon + ".png'> <p>Temp: " + ((response.list[9].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[9].main.humidity + "%" + "</p></div>");
 
-    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
+    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay'><p>" + 
     (moment(response.list[17].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[17].weather[0].icon + ".png'> <p>Temp: " + ((response.list[17].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[17].main.humidity + "%" + "</p></div>");
 
-    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
+    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay'><p>" + 
     (moment(response.list[25].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[25].weather[0].icon + ".png'> <p>Temp: " + ((response.list[25].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[25].main.humidity + "%" + "</p></div>");
 
-    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay' id='fiveDayList'><p>" + 
+    $("#fiveDayList").append("<div class='card bg-primary text-white fiveDay'><p>" + 
     (moment(response.list[33].dt_txt).format("M/D/YYYY")) + "</p> <img src='http://openweathermap.org/img/wn/" + 
     response.list[33].weather[0].icon + ".png'> <p>Temp: " + ((response.list[33].main.temp-273)*1.8+32).toFixed(2) + 
     "°F</p> <p>Humidity: " + response.list[33].main.humidity + "%" + "</p></div>");
@@ -117,7 +117,7 @@ function getStored() {
 
     $(".storeCity").empty();
 
-    var cities = JSON.parse(localStorage.getItem("cities"))
+    var cities = JSON.parse(localStorage.getItem("cities")) || []
     for (var g = 0; g < cities.length; g++) {
         
     var city = cities[g];

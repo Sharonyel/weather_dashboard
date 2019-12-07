@@ -20,12 +20,12 @@ button{
     color: white;
 }
 h2{
-    /* border: black; */
-    /* background-color: black; */
-    /* color: white; */
     text-align: center;
     line-height: 80px;
     margin: 10px;
+}
+.displayDay{
+    text-transform: capitalize;
 }
 img{
     margin-top: -25px;
@@ -49,7 +49,6 @@ img{
     border-radius: 15px;
     font-size: 20px;
     justify-content: center;
-    /* float: left; */
     margin-right:  10px;
     margin-left: auto;
 } 
@@ -59,7 +58,6 @@ img{
     background-color: white;
     border-radius: 10px;
     padding: 30px;
-    /* box-shadow: 0 0 10px 2px; */
     font-size: 30px;
     justify-content: center;
     margin: auto;
@@ -69,13 +67,12 @@ img{
     height: 150px;
     border: 20px;
     width: 20px;
-    margin: auto;
     padding: 50px;
     text-align: center;
 }
 .fiveDay{
-    padding: 20px;
-    margin: auto;
+    padding: 10px;
+    margin: 5px;
 }
 .cityBtn {
     width: 200px;
@@ -83,7 +80,6 @@ img{
     padding: 0;
     margin-left: 20px;
     font-size: 20px;
-    /* border-block-start-color: gray; */
     background-color: transparent;
     color: black;
 }
@@ -93,7 +89,6 @@ img{
 
 .weatherInfo{
     margin-right: auto;
-    /* text-justify: distribute-all-lines; */
     text-align: left;
     font-size: 20px;
 }
@@ -101,8 +96,4 @@ p{
     text-align: left;
     font-size: 15px;
 }
-/* .displayDay{
-    margin-bottom: 30px;
-    padding: 10px;
-} */
 
